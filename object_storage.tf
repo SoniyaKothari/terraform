@@ -12,7 +12,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "example" {
-  bucket = "dhanu-simple-terraform-bucket-12345"
+  bucket = "soniya-simple-terraform-bucket-12345"
 
   tags = {
     Name        = "simple-s3-bucket"
