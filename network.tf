@@ -1,5 +1,9 @@
 resource "aws_eip" "example_eip" {
   domain = "vpc"
+
+  tags = {
+    Name = "example-eip"
+  }
 }
 
 resource "aws_security_group" "basic_sg" {
@@ -8,6 +12,7 @@ resource "aws_security_group" "basic_sg" {
   vpc_id      = var.vpc_id
 
   ingress {
+    description = "Allow SSH"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
@@ -15,9 +20,14 @@ resource "aws_security_group" "basic_sg" {
   }
 
   egress {
+    description = "Allow all outbound traffic"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "basic-sg"
   }
 }
