@@ -16,7 +16,7 @@ resource "aws_security_group" "basic_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = [var.allowed_ssh_cidr]
   }
 
   egress {
@@ -30,4 +30,18 @@ resource "aws_security_group" "basic_sg" {
   tags = {
     Name = "basic-sg"
   }
+}
+
+resource "aws_network_interface" "example_eni" {
+  subnet_id       = var.subnet_id
+  security_groups = [aws_security_group.basic_sg.id]
+
+  tags = {
+    Name = "example-eni"
+  }
+}
+
+resource "aws_eip_association" "eip_assoc" {
+  allocation_id        = aws_eip.example_eip.id
+  network_interface_id = aws_network_interface.example_eni.id
 }
