@@ -44,4 +44,8 @@ resource "aws_network_interface" "example_eni" {
 resource "aws_eip_association" "eip_assoc" {
   allocation_id        = aws_eip.example_eip.id
   network_interface_id = aws_network_interface.example_eni.id
+
+  depends_on = [
+    aws_network_interface.example_eni
+  ]
 }
