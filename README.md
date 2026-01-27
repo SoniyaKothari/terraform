@@ -23,19 +23,19 @@ This project provisions the following AWS resources:
 
 ## Project Structure
 
-.
-├── provider.tf
-├── variables.tf
-├── terraform.tfvars
-├── network.tf
-├── ec2.tf
-├── eip.tf
-├── iam.tf
-├── object_storage.tf
-├── s3_bucket.tf
-├── s3_policy.tf
-├── sqs.tf
-└── tags.tf
+Project root
+|-- provider.tf
+|-- variables.tf
+|-- terraform.tfvars
+|-- network.tf
+|-- ec2.tf
+|-- eip.tf
+|-- iam.tf
+|-- object_storage.tf
+|-- s3_bucket.tf
+|-- s3_policy.tf
+|-- sqs.tf
+|-- tags.tf
 
 ---
 
@@ -51,19 +51,15 @@ This project provisions the following AWS resources:
 ## How to Use
 
 Initialize Terraform:
-
 terraform init
 
 Review the execution plan:
-
 terraform plan
 
 Apply the configuration:
-
 terraform apply
 
 Destroy all resources when no longer needed:
-
 terraform destroy
 
 ---
